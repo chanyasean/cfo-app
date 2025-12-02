@@ -1,7 +1,7 @@
 // frontend/script.js
 
 // ตอน dev local:
-const API_BASE = 'http://localhost:3000';
+const API_BASE = 'https://cfo-app-e9b3.onrender.com';
 // ตอน deploy จริง เปลี่ยนเป็น URL Backend บน Render:
 // const API_BASE = 'https://cfo-backend-xxxx.onrender.com';
 
