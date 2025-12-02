@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f5f7fb;
+  color: #111827;
+}
+
+header {
+  padding: 12px 24px;
+  background: #111827;
+  color: #f9fafb;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+header p {
+  margin: 4px 0 0;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+/* NAV */
+.main-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #374151;
+  color: #e5e7eb;
+}
+
+.nav-btn.active {
+  background: #2563eb;
+  color: #f9fafb;
+}
+
+main {
+  padding: 16px 24px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Summary cards */
+#summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.12);
+}
+
+.card.sub {
+  background: #eef2ff;
+}
+
+.card h2,
+.card h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.card p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Form & tables container cards */
+#form-section,
+#activities-section,
+#monthly-summary-section {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08);
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+/* form */
+.form-row {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row label {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+input,
+select,
+button {
+  font-size: 14px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
+}
+
+button {
+  margin-top: 8px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+#form-message {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+/* Activities & Monthly tables */
+#activities-table,
+#monthly-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+#activities-table th,
+#activities-table td,
+#monthly-summary-table th,
+#monthly-summary-table td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 6px 8px;
+  text-align: left;
+}
+
+#activities-table th,
+#monthly-summary-table th {
+  background: #f3f4f6;
+}
+
+/* ครอบรอบตาราง ให้เลื่อนซ้าย–ขวาได้ถ้าจอแคบ */
+.table-scroll-x {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;     /* ให้เลื่อนแนวนอนได้เวลาแคบ */
+  -webkit-overflow-scrolling: touch;
+}
+
+.activity-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;     /* กันไม่ให้คอลัมน์เบียดกันจนอ่านไม่ออก */
+}
+
+.activity-table th,
+.activity-table td {
+  padding: 8px 12px;
+  text-align: left;
+  white-space: normal;    /* สำคัญ: ยอมขึ้นบรรทัดใหม่ */
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.activity-table td:nth-child(2),  /* Activity Description */
+.activity-table td:nth-child(3)   /* EF Activity */
+{
+  max-width: 250px;
+}
+
+/* mobile: ลดขนาดตัวอักษร + padding */
+@media (max-width: 768px) {
+  .activity-table th,
+  .activity-table td {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}
+
+/* Monthly summary tweak */
+#monthly-summary-section .header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+#monthly-summary-table th,
+#monthly-summary-table td {
+  text-align: right;
+}
+
+#monthly-summary-table th:first-child,
+#monthly-summary-table td:first-child {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  #monthly-summary-section .header-row {
+    flex-wrap: wrap;
+  }
+
+  main {
+    padding: 12px 12px 24px;
+  }
+
+  header {
+    padding: 10px 16px;
+  }
+
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-nav {
+    width: 100%;
+  }
+}
+

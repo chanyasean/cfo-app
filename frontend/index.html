@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>CFO Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <div>
+        <h1>CFO Dashboard</h1>
+        <p>Carbon Footprint of Organization</p>
+      </div>
+      <nav class="main-nav">
+        <button class="nav-btn active" data-target="dashboard-view">Dashboard</button>
+        <button class="nav-btn" data-target="data-view">Data Entry</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== DASHBOARD VIEW ===== -->
+    <section id="dashboard-view">
+      <!-- Summary Cards -->
+      <section id="summary-cards">
+        <div class="card">
+          <h2>Total Emissions</h2>
+          <p id="total-tco2e">0 tCO₂e</p>
+        </div>
+        <div class="card sub">
+          <h3>Scope 1</h3>
+          <p id="scope1-tco2e">0 tCO₂e</p>
+        </div>
+        <div class="card sub">
+          <h3>Scope 2</h3>
+          <p id="scope2-tco2e">0 tCO₂e</p>
+        </div>
+        <div class="card sub">
+          <h3>Scope 3</h3>
+          <p id="scope3-tco2e">0 tCO₂e</p>
+        </div>
+      </section>
+
+      <!-- Monthly Summary -->
+      <section id="monthly-summary-section">
+        <div class="header-row">
+          <h2>สรุปรายเดือนตาม Scope</h2>
+          <button id="export-pdf-btn">Export PDF</button>
+        </div>
+        
+        <div class="table-responsive">
+          <table id="monthly-summary-table">
+            <thead>
+              <tr>
+                <th>Month (YYYY-MM)</th>
+                <th>Scope 1 (tCO₂e)</th>
+                <th>Scope 2 (tCO₂e)</th>
+                <th>Scope 3 (tCO₂e)</th>
+                <th>Total (tCO₂e)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- filled by script.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <!-- ===== DATA ENTRY VIEW ===== -->
+    <section id="data-view" class="hidden">
+      <!-- Form -->
+      <section id="form-section">
+        <h2>เพิ่มกิจกรรม (Activity Data)</h2>
+        <form id="activity-form">
+          <div class="form-row">
+            <label>Activity Description</label>
+            <input
+              type="text"
+              id="activity_description"
+              placeholder="เช่น ใช้ไฟฟ้าออฟฟิศชั้น 3 เดือน ม.ค."
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label>Date</label>
+            <input type="date" id="date" required />
+          </div>
+
+          <div class="form-row">
+            <label>Scope</label>
+            <select id="scope" required>
+              <option value="">-- เลือก Scope --</option>
+              <option value="1">Scope 1</option>
+              <option value="2">Scope 2</option>
+              <option value="3">Scope 3</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>EF (ตาม EF Activity + หน่วยฐาน)</label>
+            <select id="ef_id" required disabled>
+              <option value="">-- เลือก Scope ก่อน --</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>Unit (หน่วยของ Activity Data)</label>
+            <select id="unit_id" required disabled>
+              <option value="">-- เลือก EF ก่อน --</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>Amount</label>
+            <input
+              type="number"
+              step="any"
+              min="0"
+              id="amount"
+              placeholder="เช่น 10"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label>Remark</label>
+            <input
+              type="text"
+              id="remark"
+              placeholder="หมายเหตุเพิ่มเติม (ถ้ามี)"
+            />
+          </div>
+
+          <button type="submit">บันทึก</button>
+        </form>
+        <p id="form-message"></p>
+      </section>
+
+      <!-- Activities Table -->
+      <section id="activities-section">
+        <div class="table-responsive">
+        <h2>รายการ Activity Data</h2>
+        <div class="table-scroll-x">
+          <table id="activities-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Activity Description</th>
+                <th>EF Activity</th>
+                <th>Scope</th>
+                <th>Amount</th>
+                <th>Unit</th>
+                <th>tCO₂e</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- fill by script.js -->
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- jsPDF + autoTable สำหรับ Export PDF -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.3/dist/jspdf.plugin.autotable.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
